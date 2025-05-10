@@ -1,0 +1,27 @@
+<form action="" [formGroup]="form">
+    <section>
+        <h1>Info Personali</h1>
+        <div *ngFor="let input of inputField">
+            <div id="boxHeaderInputs">
+
+
+                <label for="">{{input.label}}</label>
+                <p id="errorInputs" *ngIf="input.controlName !== 'name' && form.get(input.controlName).errors">
+                    Il campo {{ input.label.toLowerCase() }} non è validoofr.
+                </p>
+
+
+            </div>
+            <div id="boxInput">
+                <input type="{{input.type}}" placeholder="{{input.placeholder}}"
+                    formControlName="{{input.controlName}}">
+            </div>
+
+        </div>
+
+        <div id="btnSubmitStepInfo">
+
+            <button (click)="submit()"  type="button">Prossimo Step</button>
+        </div>
+    </section>
+</form>

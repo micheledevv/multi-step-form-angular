@@ -1,0 +1,38 @@
+section{
+    height: 50%;
+    h1{
+        font-family: 'boldTitle';
+        font-size: 25px;
+    }
+    #boxHeaderInputs{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        label{
+            font-family: 'regularText';
+        }
+
+        #errorInputs{
+            color: red;
+            font-weight: bold
+        }
+    }
+    #boxInput{
+        input{
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    }
+
+    #btnSubmitStepInfo{
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        height: 82%;
+        button{
+            padding: 10px;
+        }
+    }
+    
+}
