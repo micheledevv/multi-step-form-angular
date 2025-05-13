@@ -1,3 +1,4 @@
+<!-- app.component.html -->
 <section>
   <form>
     <nav>
@@ -5,23 +6,22 @@
         <li *ngFor="let stepForm of stepForms">
           <header>
             <div [ngStyle]="{
-      'background-color': stepForm.number === currentStepNumber ? 'grey' : '',
-      'cursor': stepForm.number !== 1 ? 'not-allowed' : 'pointer'
-    }">
+              'background-color': stepForm.number === currentStepNumber ? 'grey' : '',
+              'cursor': stepForm.number > currentStepNumber ? 'not-allowed' : 'pointer'
+            }">
               {{ stepForm.number }}
             </div>
 
             <aside>
               <h5>{{ stepForm.title }}</h5>
-              <a [routerLink]="stepForm.number === '1' ? stepForm.route : null"
-                [style.pointer-events]="stepForm.number !== '1' ? 'none' : 'auto'"
-                [style.cursor]="stepForm.number !== '1' ? 'not-allowed' : 'pointer'">
+              <a [routerLink]="stepForm.number <= currentStepNumber ? stepForm.route : null"
+                 [style.pointer-events]="stepForm.number <= currentStepNumber ? 'auto' : 'none'"
+                 [style.cursor]="stepForm.number <= currentStepNumber ? 'pointer' : 'not-allowed'">
                 {{ stepForm.value }}
               </a>
             </aside>
           </header>
         </li>
-
       </ul>
     </nav>
 

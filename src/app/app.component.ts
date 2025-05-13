@@ -4,29 +4,28 @@ import { StepFormService } from './step-form-nav.service';
 import { tap } from 'rxjs';
 import { NgFor, NgStyle } from '@angular/common';
 
+// app.component.ts
 @Component({
   selector: 'app-root',
-  standalone:true,
+  standalone: true,
   imports: [RouterOutlet, NgFor, RouterLink, RouterModule, NgStyle],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private stepFormService:StepFormService){
+  stepForms: any[] = [];
+  currentStepNumber: number = 1;
 
-  }
-  title = 'multi-step-form';
-  stepForms:any;
-  currentStepNumber = '1'; 
+  constructor(private stepFormService: StepFormService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.stepFormService.getStepForm().pipe(
-      tap((res) => {
-        console.log(res)
-        this.stepForms = res;
+      tap((res) => this.stepForms = res)
+    ).subscribe();
 
-      })
-
-    ).subscribe()
+    this.stepFormService.currentStep$.subscribe(
+      step => this.currentStepNumber = step
+    );
   }
 }
+
