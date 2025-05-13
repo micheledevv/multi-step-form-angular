@@ -4,22 +4,24 @@
       <ul>
         <li *ngFor="let stepForm of stepForms">
           <header>
-            <div [ngStyle]="stepForm.number === '1' ? {'background-color': 'aqua'} : {}">
-              {{stepForm.number}}
+            <div [ngStyle]="{
+      'background-color': stepForm.number === currentStepNumber ? 'grey' : '',
+      'cursor': stepForm.number !== 1 ? 'not-allowed' : 'pointer'
+    }">
+              {{ stepForm.number }}
             </div>
 
-
             <aside>
-
-
-              <h5>{{stepForm.title}}</h5>
-              <a [routerLink]="stepForm.route">{{ stepForm.value }}</a>
-
+              <h5>{{ stepForm.title }}</h5>
+              <a [routerLink]="stepForm.number === '1' ? stepForm.route : null"
+                [style.pointer-events]="stepForm.number !== '1' ? 'none' : 'auto'"
+                [style.cursor]="stepForm.number !== '1' ? 'not-allowed' : 'pointer'">
+                {{ stepForm.value }}
+              </a>
             </aside>
-
           </header>
-
         </li>
+
       </ul>
     </nav>
 

@@ -11,9 +11,9 @@ export class FormStepInfoService {
 
   getAllInputs():Observable<any>{
     let inputsField = [
-      {label:'Nome', placeholder:'Inserisici il tuo nome..',controlName:'name', type:'text'},
-      {label:'Email',placeholder:'Inserisici la tua email..',controlName:'emailAddress', type:'email'},
-      {label:'Numero di telefono', placeholder:'Inserisici il tuo numero..', controlName:'phoneNumber', type:'number'}
+      {label:'Nome', placeholder:'Inserisci il tuo nome..',controlName:'name', type:'text'},
+      {label:'Email',placeholder:'Inserisci la tua email..',controlName:'emailAddress', type:'email'},
+      {label:'Numero di telefono', placeholder:'Inserisci il tuo numero..', controlName:'phoneNumber', type:'number'}
     ]
     return of(inputsField)
   }

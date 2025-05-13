@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'bold';
+  src: url('assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'medium';
+  src: url('assets/fonts/Ubuntu-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'regular';
+  src: url('assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+}

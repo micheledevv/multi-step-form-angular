@@ -17,6 +17,7 @@ export class AppComponent {
   }
   title = 'multi-step-form';
   stepForms:any;
+  currentStepNumber = '1'; 
 
   ngOnInit(){
     this.stepFormService.getStepForm().pipe(

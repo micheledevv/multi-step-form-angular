@@ -1,7 +1,7 @@
 section{
     height: 50%;
     h1{
-        font-family: 'boldTitle';
+        font-family: bold;
         font-size: 25px;
     }
     #boxHeaderInputs{
@@ -9,12 +9,13 @@ section{
         align-items: center;
         justify-content: space-between;
         label{
-            font-family: 'regularText';
+            font-family: 'medium';
         }
 
         #errorInputs{
             color: red;
-            font-weight: bold
+            font-weight: bold;
+            font-family: 'bold'
         }
     }
     #boxInput{
@@ -22,6 +23,7 @@ section{
             width: 100%;
             padding: 10px;
             border-radius: 5px;
+            border:1px solid grey;
         }
     }
 
@@ -29,9 +31,14 @@ section{
         display: flex;
         justify-content: end;
         align-items: end;
-        height: 82%;
+        height: 26vh;
         button{
-            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            background-color: blue;
+            color:#ffffff;
+            font-family: 'medium';
         }
     }
     
