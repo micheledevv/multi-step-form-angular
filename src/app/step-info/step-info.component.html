@@ -6,23 +6,26 @@
 
 
                 <label for="">{{input.label}}</label>
-                <p id="errorInputs" *ngIf="input.controlName !== 'name' && form.get(input.controlName).errors">
+                <p id="errorInputs" *ngIf= "form.get(input.controlName).errors">
                     Il campo {{ input.label.toLowerCase() }} non è valido.
                 </p>
 
 
             </div>
             <div id="boxInput">
-                <input type="{{input.type}}" placeholder="{{input.placeholder}}"
-                    formControlName="{{input.controlName}}">
+                <input [style.border-color]="form.get(input.controlName).invalid ? 'red' : null" type="{{input.type}}"
+                    placeholder="{{input.placeholder}}" formControlName="{{input.controlName}}">
+
+
             </div>
 
         </div>
 
         <div id="btnSubmitStepInfo">
 
-            <button (click)="submit()"  type="button" [class.btn-disabled]="form.invalid" [disabled]="form.invalid">Prossimo Step</button>
-        
+            <button (click)="submit()" type="button" [class.btn-disabled]="form.invalid"
+                [disabled]="form.invalid">Prossimo Step</button>
+
         </div>
     </section>
 </form>
