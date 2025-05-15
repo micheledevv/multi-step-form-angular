@@ -1,4 +1,4 @@
-<form action="">
+<form action="" [formGroup]="form">
   <header>
 
 
@@ -22,7 +22,7 @@
     <div id="boxSwitch">
         <p>Mensile</p>
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" formControlName="plan">
             <span class="slider"></span>
         </label>
             <p>Annuale</p>
@@ -35,7 +35,7 @@
 
         </button>
 
-        <button type="button" id="nextStep" (click)="nextStep()">
+        <button [disabled]="form.invalid" type="button" class="next-step-btn" id="nextStep" (click)="nextStep()">
             Prossimo step
 
         </button>
