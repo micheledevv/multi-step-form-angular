@@ -13,8 +13,8 @@ export class StepFormService {
     { title: 'STEP 4', value: 'SOMMARIO', route: 'summary', number: 4 },
   ];
 
-  private currentStepSubject = new BehaviorSubject<number>(1); // valore iniziale
-  currentStep$ = this.currentStepSubject.asObservable(); // observable per i componenti
+  private currentStepSubject = new BehaviorSubject<number>(1);
+  currentStep$ = this.currentStepSubject.asObservable(); 
 
   constructor() {}
 

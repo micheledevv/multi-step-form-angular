@@ -1,28 +1,29 @@
-<!-- app.component.html -->
 <section>
   <form>
     <nav>
       <ul>
-        <li *ngFor="let stepForm of stepForms">
-          <header>
-            <div [ngStyle]="{
-              'background-color': stepForm.number === currentStepNumber ? 'grey' : '',
-              'cursor': stepForm.number > currentStepNumber ? 'not-allowed' : 'pointer'
-            }">
-              {{ stepForm.number }}
-            </div>
+  <li *ngFor="let stepForm of stepForms">
+    <header>
+      <div [ngStyle]="{
+        'background-color': stepForm.number === currentStepNumber ? '#86BBD8' : '',
+        'cursor': stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'
+      }">
+        {{ stepForm.number }}
+      </div>
 
-            <aside>
-              <h5>{{ stepForm.title }}</h5>
-              <a [routerLink]="stepForm.number <= currentStepNumber ? stepForm.route : null"
-                 [style.pointer-events]="stepForm.number <= currentStepNumber ? 'auto' : 'none'"
-                 [style.cursor]="stepForm.number <= currentStepNumber ? 'pointer' : 'not-allowed'">
-                {{ stepForm.value }}
-              </a>
-            </aside>
-          </header>
-        </li>
-      </ul>
+      <aside>
+        <h5>{{ stepForm.title }}</h5>
+        <a [routerLink]="stepForm.number === currentStepNumber ? stepForm.route : null"
+           [style.pointer-events]="stepForm.number === currentStepNumber ? 'auto' : 'none'"
+           [style.cursor]="stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'"
+           >
+          {{ stepForm.value }}
+        </a>
+      </aside>
+    </header>
+  </li>
+</ul>
+
     </nav>
 
     <main>

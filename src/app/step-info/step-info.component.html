@@ -21,7 +21,8 @@
 
         <div id="btnSubmitStepInfo">
 
-            <button (click)="submit()"  type="button">Prossimo Step</button>
+            <button (click)="submit()"  type="button" [class.btn-disabled]="form.invalid" [disabled]="form.invalid">Prossimo Step</button>
+        
         </div>
     </section>
 </form>
