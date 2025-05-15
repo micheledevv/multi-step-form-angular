@@ -1,1 +1,43 @@
-<p>step-plan works!</p>
+<form action="">
+  <header>
+
+
+        <h1>Seleziona il tuo piano</h1>
+        </header>
+ 
+
+    <main>
+
+        @for (plan of listPlans; track $index) {
+            <div (click)="selectYourPlan(plan.title)">
+                <img src="{{plan.img}}" alt="">
+                <h2>{{plan.title}}</h2>
+                <p>{{plan.price}}</p>
+
+            </div>
+        }
+
+    </main>
+
+    <div id="boxSwitch">
+        <p>Mensile</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+            <p>Annuale</p>
+
+    </div>
+
+    <div id="boxButtons">
+        <button type="button" id="previousStep" (click)="previousPage()">
+            Vai indietro
+
+        </button>
+
+        <button type="button" id="nextStep" (click)="nextStep()">
+            Prossimo step
+
+        </button>
+    </div>
+</form>
