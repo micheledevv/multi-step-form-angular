@@ -34,7 +34,7 @@ form {
                 font-family: medium;
             }
             &:hover{
-                background-color: aqua;
+                border:1px solid blue;
             }
         }
     }
@@ -58,18 +58,6 @@ form {
         display: flex;
         justify-content: space-between;
         align-items: end;
-
-        #previousStep {
-            color: blue;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: none;
-            padding: 15px;
-            font-family: 'medium';
-            cursor: pointer;
-            height: 50px;
-            background: none;
-        }
 
     }
 

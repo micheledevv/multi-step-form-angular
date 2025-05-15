@@ -1,1 +1,35 @@
-<p>step-add-ons works!</p>
+<form action="">
+    <header>
+        <h1> Scegli add-ons</h1>
+    </header>
+
+    <main>
+        @for (addOn of listAddOns; track $index) {
+            <div id="boxAddOns">
+                <input type="{{addOn.type}}">
+                <div id="boxTitleDescription">
+                    <h3>{{addOn.title}}</h3>
+                    <p>{{addOn.desc}}</p>
+
+                </div>
+                <p>{{addOn.price}}</p>
+            </div>
+        }
+
+    </main>
+
+
+     <div id="btnSubmitStepAddOns">
+
+             <button class="previus-step-btn" type="button" (click)="previousPage()">
+            Vai indietro
+
+        </button>
+
+        <button class="next-step-btn" [disabled]="form.invalid" type="button" (click)="nextStep()">
+            Prossimo step
+
+        </button>
+
+        </div>
+</form>

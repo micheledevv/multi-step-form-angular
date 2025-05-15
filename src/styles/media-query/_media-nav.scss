@@ -1,0 +1,108 @@
+@media screen and (max-width: 1024px) {
+  section {
+    form {
+      flex-direction: column;
+      width: 90%;
+      height: auto;
+      padding: 20px;
+
+      nav {
+        width: 100%;
+        height: auto;
+        background-image: url("./../../assets/images/bg-sidebar-mobile.svg"); // se ha un’immagine diversa
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        ul {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 10px;
+
+          li {
+            padding: 0;
+
+            header {
+              flex-direction: column;
+              align-items: center;
+
+              div {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+              }
+
+              aside {
+                margin: 5px 0 0 0;
+                text-align: center;
+              }
+            }
+
+            h5 {
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.5);
+            }
+
+            a {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      main {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    height: auto;
+
+    form {
+      width: 95%;
+      padding: 10px;
+
+      nav {
+        ul {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        li {
+          header {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            div {
+              width: 30px;
+              height: 30px;
+              font-size: 13px;
+            }
+
+            aside {
+              margin-left: 10px;
+            }
+          }
+
+          h5 {
+            font-size: 11px;
+            text-align: center;
+          }
+
+          a {
+            font-size: 13px;
+            display: inline-block;
+          }
+        }
+      }
+
+      main {
+        padding-top: 10px;
+      }
+    }
+  }
+}

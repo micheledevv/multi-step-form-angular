@@ -30,12 +30,12 @@
     </div>
 
     <div id="boxButtons">
-        <button type="button" id="previousStep" (click)="previousPage()">
+        <button class="previus-step-btn" type="button" id="previousStep" (click)="previousPage()">
             Vai indietro
 
         </button>
 
-        <button [disabled]="form.invalid" type="button" class="next-step-btn" id="nextStep" (click)="nextStep()">
+        <button class="next-step-btn" [disabled]="form.invalid" type="button"  id="nextStep" (click)="nextStep()">
             Prossimo step
 
         </button>

@@ -1,6 +1,5 @@
 .next-step-btn {
   border-radius: 10px;
-  margin-bottom: 10px;
   border: none;
   padding: 15px;
   background-color: blue;
@@ -8,4 +7,15 @@
   font-family: 'medium';
   cursor: pointer;
   height: 50px;
+}
+
+.previus-step-btn {
+  color: blue;
+  border-radius: 10px;
+  border: none;
+  padding: 15px;
+  font-family: 'medium';
+  cursor: pointer;
+  height: 50px;
+  background: none;
 }

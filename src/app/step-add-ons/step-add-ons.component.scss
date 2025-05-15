@@ -1,0 +1,66 @@
+@import './../../styles/media-query/media-addons';
+
+form {
+    header {
+        h1 {
+            font-family: 'bold';
+        }
+
+
+
+    }
+
+    main {
+        height: 40vh;
+
+        #boxAddOns {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid rgb(209, 206, 206);
+            &:hover{
+                border:1px solid blue;
+                cursor: pointer;
+
+            }
+
+
+            border-radius: 15px;
+            margin-top: 20px;
+            p{
+                font-family: regular;
+            }
+            #boxTitleDescription{
+                h3{
+                    font-family: bold;
+                }
+                p{
+                    font-family: regular;
+                }
+            }
+
+
+
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+
+
+
+    }
+
+    #btnSubmitStepAddOns {
+        display: flex;
+        justify-content:space-between ;
+        align-items: end;
+
+        height: 15vh;
+
+
+    }
+}
+
+
