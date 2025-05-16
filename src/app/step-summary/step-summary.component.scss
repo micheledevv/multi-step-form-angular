@@ -1,0 +1,76 @@
+form {
+    header {
+        h1 {
+            font-family: bold;
+        }
+    }
+
+    main {
+        #boxSummary {
+            background-color: #CAD2C5;
+
+            #boxPlanChoose {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-family: bold;
+
+                }
+
+                a {
+                    font-family: regular;
+                    text-decoration: none;
+
+                }
+
+                #priceChoose {
+                    font-family: regular;
+
+                }
+            }
+
+            #addonChoose {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h4 {
+                    font-family: bold;
+
+                }
+
+                p {
+                    font-family: regular;
+                }
+            }
+
+        }
+
+
+    }
+
+    #totalPrice {
+        margin-top: 10px;
+        background-color: aqua;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            font-family: bold;
+        }
+
+        p {
+            font-family: regular;
+        }
+    }
+    #boxButtons{
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        height: 30vh;
+    }
+
+}

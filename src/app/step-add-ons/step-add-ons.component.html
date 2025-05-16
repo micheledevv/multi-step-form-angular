@@ -1,35 +1,27 @@
-<form action="">
-    <header>
-        <h1> Scegli add-ons</h1>
-    </header>
+<form [formGroup]="form">
+  <header>
+    <h1>Scegli add-ons</h1>
+  </header>
 
-    <main>
-        @for (addOn of listAddOns; track $index) {
-            <div id="boxAddOns">
-                <input type="{{addOn.type}}">
-                <div id="boxTitleDescription">
-                    <h3>{{addOn.title}}</h3>
-                    <p>{{addOn.desc}}</p>
+  <main>
+    @for (addOn of listAddOns; track $index) {
+    <label id="boxAddOns" [for]="'addOn-' + $index">
+      <input id="{{ 'addOn-' + $index }}" type="{{ addOn.type }}" [value]="addOn.value" formControlName="addOn" />
+      <div id="boxTitleDescription">
+        <h3>{{ addOn.title }}</h3>
+        <p>{{ addOn.desc }}</p>
+      </div>
+      <p>{{ addOn.price }}</p>
+    </label>
+    }
+  </main>
 
-                </div>
-                <p>{{addOn.price}}</p>
-            </div>
-        }
+  <div id="btnSubmitStepAddOns">
+    <button class="previus-step-btn" type="button" (click)="previousPage()">Vai indietro</button>
+    <button class="next-step-btn" [ngClass]="{ 'btn-disabled': form.invalid }" type="button"
+      [disabled]="form.invalid" (click)="nextStep()">
+      Prossimo step
+    </button>
 
-    </main>
-
-
-     <div id="btnSubmitStepAddOns">
-
-             <button class="previus-step-btn" type="button" (click)="previousPage()">
-            Vai indietro
-
-        </button>
-
-        <button class="next-step-btn" [disabled]="form.invalid" type="button" (click)="nextStep()">
-            Prossimo step
-
-        </button>
-
-        </div>
+  </div>
 </form>

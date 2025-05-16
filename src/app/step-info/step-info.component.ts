@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { NgFor,NgIf } from '@angular/common';
 import { StepFormService } from '../step-form-nav.service';
 import { Router } from '@angular/router';
+import { StepSummaryService } from '../step-summary/services/step-summary.service';
 
 @Component({
   selector: 'app-step-info',
@@ -14,10 +15,11 @@ import { Router } from '@angular/router';
   styleUrl: './step-info.component.scss'
 })
 export class StepInfoComponent {
-  constructor(private formStepInfoService:FormStepInfoService, private stepFormService: StepFormService, private router: Router){}
+  constructor(private formStepInfoService:FormStepInfoService, private stepSummaryService: StepSummaryService,  private stepFormService: StepFormService, private router: Router){}
 
   form:FormGroup;
   inputField:any[] = []
+
 
   ngOnInit(){
      this.form = new FormGroup({
@@ -38,12 +40,13 @@ export class StepInfoComponent {
     console.log(this.form.value);
     this.stepFormService.goToNextStep(); 
     this.router.navigate(['/plan']);
+    let summaryValues = this.stepSummaryService.getSummary()
+    summaryValues.push(this.form.value)
+    console.log(summaryValues)
+
+
 
     
-  } else {
-    console.log("Il form non è valido");
-    console.log(this.form.value);
-
   }
 }
 

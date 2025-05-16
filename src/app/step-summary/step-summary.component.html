@@ -1,1 +1,48 @@
-<p>step-summary works!</p>
+<form action="">
+    <header>
+        <h1>
+            Sommario
+        </h1>
+
+        <main>
+
+            <div id="boxSummary">
+                <div id="boxPlanChoose">
+
+                    <div id="planChoose">
+                        <h2>Arcade (monthly)</h2>
+                        <a href="change">cambia</a>
+
+                    </div>
+                    <div id="priceChoose">
+                        <p>€9/mese</p>
+
+                    </div>
+                </div>
+                <hr>
+                <div id="addonChoose">
+                    <h4>Online services</h4>
+                    <p>9 euro</p>
+
+                </div>
+
+
+            </div>
+            <div id="totalPrice">
+                <h3>total</h3>
+                <p>20 euro</p>
+            </div>
+        </main>
+    </header>
+      <div id="boxButtons">
+        <button class="previus-step-btn" type="button" id="previousStep" (click)="previousPage()">
+            Vai indietro
+
+        </button>
+
+        <button class="next-step-btn" [disabled]="form.invalid" type="button"  id="nextStep" (click)="nextStep()">
+            Conferma
+
+        </button>
+    </div>
+</form>

@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { StepAddOnsService } from './services/step-add-ons.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { StepFormService } from '../step-form-nav.service';
+import { StepSummaryService } from '../step-summary/services/step-summary.service';
+import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-step-add-ons',
   standalone:true,
-  imports: [],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './step-add-ons.component.html',
   styleUrl: './step-add-ons.component.scss'
 })
 export class StepAddOnsComponent {
-  constructor(private stepAddOnsService: StepAddOnsService){
+  constructor(private router: Router, private stepAddOnsService: StepAddOnsService, private stepNavService: StepFormService, private stepSummaryService: StepSummaryService){
 
   }
 
@@ -19,22 +23,31 @@ export class StepAddOnsComponent {
 
   ngOnInit(){
     this.form = new FormGroup({
-      addOn: new FormControl('',Validators.required)
+      addOn: new FormControl(false, Validators.requiredTrue)
+
     })
   this.listAddOns =  this.stepAddOnsService.getListAddOns()
-  console.log(this.listAddOns)
+
+    let summaryValues = this.stepSummaryService.getSummary();
+    console.log(summaryValues)
 
   }
 
   submit(){
-    console.log("test")
   }
 
   previousPage(){
+    console.log("r44f")
 
   }
 
   nextStep(){
+    let summaryValues = this.stepSummaryService.getSummary();
+    console.log(summaryValues)
+    this.router.navigate(['/summary']);
+    console.log("fe3de")
+
+
 
   }
 
