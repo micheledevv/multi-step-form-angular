@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SummaryRecap } from '../models/summary-recap.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class StepSummaryService {
 
   constructor() { }
 
-  listRecap:any[]=[];
+  listRecap:SummaryRecap[]=[];
 
   getSummary(){
     return this.listRecap

@@ -4,24 +4,34 @@
   </header>
 
   <main>
-    @for (addOn of listAddOns; track $index) {
-    <label id="boxAddOns" [for]="'addOn-' + $index">
-      <input id="{{ 'addOn-' + $index }}" type="{{ addOn.type }}" [value]="addOn.value" formControlName="addOn" />
-      <div id="boxTitleDescription">
-        <h3>{{ addOn.title }}</h3>
-        <p>{{ addOn.desc }}</p>
-      </div>
-      <p>{{ addOn.price }}</p>
-    </label>
-    }
+    <div *ngFor="let addOn of listAddOns">
+      <label id="boxAddOns">
+        <input
+          type="checkbox"
+          [value]="addOn.title"
+          (change)="toggleAddOn(addOn.title, $event)"
+        />
+        <div id="boxTitleDescription">
+          <h3>{{ addOn.title }}</h3>
+          <p>{{ addOn.desc }}</p>
+        </div>
+        <p>{{ addOn.price }}</p>
+      </label>
+    </div>
   </main>
 
   <div id="btnSubmitStepAddOns">
-    <button class="previus-step-btn" type="button" (click)="previousPage()">Vai indietro</button>
-    <button class="next-step-btn" [ngClass]="{ 'btn-disabled': form.invalid }" type="button"
-      [disabled]="form.invalid" (click)="nextStep()">
+    <button class="previus-step-btn" type="button" (click)="previousPage()">
+      Vai indietro
+    </button>
+    <button
+      class="next-step-btn"
+      type="button"
+      [disabled]="!isAtLeastOneSelected()"
+      [ngClass]="{ 'btn-disabled': !isAtLeastOneSelected() }"
+      (click)="nextStep()"
+    >
       Prossimo step
     </button>
-
   </div>
 </form>

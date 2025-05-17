@@ -1,54 +1,86 @@
 import { Component } from '@angular/core';
-import { StepAddOnsService } from './services/step-add-ons.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StepFormService } from '../step-form-nav.service';
-import { StepSummaryService } from '../step-summary/services/step-summary.service';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgClass } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
+import { StepAddOnsService } from './services/step-add-ons.service';
+import { StepSummaryService } from '../step-summary/services/step-summary.service'; // <-- IMPORTA IL SERVICE
 
 @Component({
   selector: 'app-step-add-ons',
-  standalone:true,
-  imports: [ReactiveFormsModule, NgClass],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgClass, NgFor],
   templateUrl: './step-add-ons.component.html',
   styleUrl: './step-add-ons.component.scss'
 })
 export class StepAddOnsComponent {
-  constructor(private router: Router, private stepAddOnsService: StepAddOnsService, private stepNavService: StepFormService, private stepSummaryService: StepSummaryService){
+  form!: FormGroup;
+  listAddOns: any[] = [];
 
-  }
+  constructor(
+    private router: Router,
+    private stepAddonsService: StepAddOnsService,
+    private stepSummaryService: StepSummaryService // <-- INIETTA IL SERVICE
+  ) {}
 
-  listAddOns:any[];
-  form:FormGroup;
+  ngOnInit() {
+    this.listAddOns = this.stepAddonsService.getListAddOns();
 
-  ngOnInit(){
     this.form = new FormGroup({
-      addOn: new FormControl(false, Validators.requiredTrue)
-
-    })
-  this.listAddOns =  this.stepAddOnsService.getListAddOns()
-
-    let summaryValues = this.stepSummaryService.getSummary();
-    console.log(summaryValues)
-
+      addOns: new FormControl<string[]>([])
+    });
   }
 
-  submit(){
+  toggleAddOn(value: string, event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    const selected = this.form.value.addOns || [];
+
+    if (checked) {
+      selected.push(value);
+    } else {
+      const index = selected.indexOf(value);
+      if (index >= 0) selected.splice(index, 1);
+    }
+
+    this.form.patchValue({ addOns: selected });
   }
 
-  previousPage(){
-    console.log("r44f")
-
+  isAtLeastOneSelected(): boolean {
+    return (this.form.value.addOns?.length ?? 0) > 0;
   }
 
-  nextStep(){
-    let summaryValues = this.stepSummaryService.getSummary();
-    console.log(summaryValues)
+  previousPage() {
+    console.log('Vai indietro');
+  }
+
+  nextStep() {
+    const selectedTitles = this.form.value.addOns || [];
+
+    // Recupera gli oggetti completi (con titolo e prezzo)
+    const selectedAddOns = this.listAddOns
+      .filter(addOn => selectedTitles.includes(addOn.title))
+      .map(addOn => ({
+        title: addOn.title,
+        price: addOn.price
+      }));
+
+    console.log('Add-ons selezionati:', selectedAddOns);
+
+    // Recupera il riepilogo esistente
+    const currentSummary = this.stepSummaryService.getSummary();
+
+    // Aggiunge un oggetto per questo step
+    const newSummary = [
+      ...currentSummary,
+      {
+        step: 'AddOns', // nome dello step (puoi cambiarlo se preferisci)
+        values: selectedAddOns
+      }
+    ];
+
+    // Salva il nuovo riepilogo
+    this.stepSummaryService.setSummary(newSummary);
+    console.log('tutti i campi:',this.stepSummaryService.getSummary())
+
     this.router.navigate(['/summary']);
-    console.log("fe3de")
-
-
-
   }
-
 }

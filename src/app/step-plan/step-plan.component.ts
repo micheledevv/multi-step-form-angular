@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StepSummaryService } from '../step-summary/services/step-summary.service';
 import { StepFormService } from '../step-form-nav.service';
 import { Router } from '@angular/router';
+import { Plan } from './models/plan.model';
 
 @Component({
   selector: 'app-step-plan',
@@ -33,7 +34,7 @@ export class StepPlanComponent {
 
   const paymentType = isAnnual ? 'Annuale' : 'Mensile';
 
-  const selectedPlan = {
+  const selectedPlan:Plan = {
     piano: this.planChoose,
     tipoPagamento: paymentType
   };
@@ -41,7 +42,8 @@ export class StepPlanComponent {
   let summaryValues = this.stepSummaryService.getSummary();
 
   // Svuoto e inserisco di nuovo il piano selezionato (opzionale)
-  summaryValues = summaryValues.filter(item => item.piano === undefined);
+  summaryValues = summaryValues.filter(item => !('piano' in item));
+
   summaryValues.push(selectedPlan);
 
   this.stepSummaryService.setSummary(summaryValues); 

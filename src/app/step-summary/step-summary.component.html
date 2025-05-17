@@ -1,48 +1,40 @@
-<form action="">
-    <header>
-        <h1>
-            Sommario
-        </h1>
+<form>
+  <header>
+    <h1>Sommario</h1>
+  </header>
 
-        <main>
+  <main>
+    <div id="boxSummary">
+      <!-- Piano selezionato -->
+      <div id="boxPlanChoose" *ngIf="plan">
+        <div id="planChoose">
+          <h2>{{ plan.piano }} ({{ plan.tipoPagamento.toLowerCase() }})</h2>
+          <a href="#">Cambia</a>
+        </div>
+        <div id="priceChoose">
+          <p>€{{ plan.prezzo }}/mese</p>
+        </div>
+      </div>
 
-            <div id="boxSummary">
-                <div id="boxPlanChoose">
+      <hr />
 
-                    <div id="planChoose">
-                        <h2>Arcade (monthly)</h2>
-                        <a href="change">cambia</a>
-
-                    </div>
-                    <div id="priceChoose">
-                        <p>€9/mese</p>
-
-                    </div>
-                </div>
-                <hr>
-                <div id="addonChoose">
-                    <h4>Online services</h4>
-                    <p>9 euro</p>
-
-                </div>
-
-
-            </div>
-            <div id="totalPrice">
-                <h3>total</h3>
-                <p>20 euro</p>
-            </div>
-        </main>
-    </header>
-      <div id="boxButtons">
-        <button class="previus-step-btn" type="button" id="previousStep" (click)="previousPage()">
-            Vai indietro
-
-        </button>
-
-        <button class="next-step-btn" [disabled]="form.invalid" type="button"  id="nextStep" (click)="nextStep()">
-            Conferma
-
-        </button>
+      <!-- Add-ons -->
+      <div *ngFor="let add of addOns" id="addonChoose">
+        <h4>{{ add.title }}</h4>
+        <p>{{ add.price }}</p>
+      </div>
     </div>
+
+    <!-- Totale -->
+    <div id="totalPrice">
+      <h3>Totale</h3>
+      <p>€{{ total }}/mese</p>
+    </div>
+  </main>
+
+  <!-- Bottoni -->
+  <div id="boxButtons">
+    <button class="previus-step-btn" type="button" (click)="previousPage()">Vai indietro</button>
+    <button class="next-step-btn" type="button" (click)="nextStep()">Conferma</button>
+  </div>
 </form>

@@ -18,7 +18,7 @@ export class StepInfoComponent {
   constructor(private formStepInfoService:FormStepInfoService, private stepSummaryService: StepSummaryService,  private stepFormService: StepFormService, private router: Router){}
 
   form:FormGroup;
-  inputField:any[] = []
+  inputField:[] = []
 
 
   ngOnInit(){
