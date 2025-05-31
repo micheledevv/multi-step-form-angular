@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { StepAddOnsService } from './services/step-add-ons.service';
 import { StepSummaryService } from '../step-summary/services/step-summary.service'; // <-- IMPORTA IL SERVICE
 import { ListAddons } from './models/addon.models';
@@ -9,7 +9,7 @@ import { ListAddons } from './models/addon.models';
 @Component({
   selector: 'app-step-add-ons',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, NgFor],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './step-add-ons.component.html',
   styleUrl: './step-add-ons.component.scss'
 })

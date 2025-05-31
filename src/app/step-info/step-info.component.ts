@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormStepInfoService } from './services/form-step-info.service';
 import { tap } from 'rxjs';
-import { NgFor,NgIf } from '@angular/common';
 import { StepFormService } from '../step-form-nav.service';
 import { Router } from '@angular/router';
 import { StepSummaryService } from '../step-summary/services/step-summary.service';
@@ -11,7 +10,7 @@ import {  UserInfo } from './models/user-info.model';
 @Component({
   selector: 'app-step-info',
   standalone:true,
-  imports: [ReactiveFormsModule, NgFor,NgIf],
+  imports: [ReactiveFormsModule],
   templateUrl: './step-info.component.html',
   styleUrl: './step-info.component.scss'
 })

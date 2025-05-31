@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { StepFormService } from './step-form-nav.service';
 import { tap } from 'rxjs';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 
 // app.component.ts
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, RouterLink, RouterModule, NgStyle],
+  imports: [RouterOutlet, RouterLink, RouterModule, NgStyle],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
