@@ -1,20 +1,20 @@
-<form action="" [formGroup]="form">
-  <header>
+<form action="" [formGroup]="form" (ngSubmit)="submit()">
+    <header>
 
 
         <h1>Seleziona il tuo piano</h1>
-        </header>
- 
+    </header>
+
 
     <main>
 
         @for (plan of listPlans; track $index) {
-            <div (click)="selectYourPlan(plan.title)">
-                <img src="{{plan.img}}" alt="">
-                <h2>{{plan.title}}</h2>
-                <p>{{plan.price}}</p>
+        <div (click)="selectYourPlan(plan.title)">
+            <img src="{{plan.img}}" alt="">
+            <h2>{{plan.title}}</h2>
+            <p>{{plan.price}}</p>
 
-            </div>
+        </div>
         }
 
     </main>
@@ -25,7 +25,7 @@
             <input type="checkbox" formControlName="plan">
             <span class="slider"></span>
         </label>
-            <p>Annuale</p>
+        <p>Annuale</p>
 
     </div>
 
@@ -35,7 +35,7 @@
 
         </button>
 
-        <button class="next-step-btn" [disabled]="form.invalid" type="button"  id="nextStep" (click)="nextStep()">
+        <button class="next-step-btn" [disabled]="form.invalid" type="button" id="nextStep">
             Prossimo step
 
         </button>

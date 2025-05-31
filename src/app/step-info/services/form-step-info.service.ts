@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import {ReactiveFormsModule} from '@angular/forms'
 
 @Injectable({
   providedIn: 'root'

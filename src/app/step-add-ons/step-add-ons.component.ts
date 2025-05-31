@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { StepAddOnsService } from './services/step-add-ons.service';
 import { StepSummaryService } from '../step-summary/services/step-summary.service'; // <-- IMPORTA IL SERVICE
+import { ListAddons } from './models/addon.models';
 
 @Component({
   selector: 'app-step-add-ons',
@@ -14,12 +15,12 @@ import { StepSummaryService } from '../step-summary/services/step-summary.servic
 })
 export class StepAddOnsComponent {
   form!: FormGroup;
-  listAddOns: any[] = [];
+  listAddOns: ListAddons[] = [];
 
   constructor(
     private router: Router,
     private stepAddonsService: StepAddOnsService,
-    private stepSummaryService: StepSummaryService // <-- INIETTA IL SERVICE
+    private stepSummaryService: StepSummaryService
   ) {}
 
   ngOnInit() {
@@ -28,9 +29,11 @@ export class StepAddOnsComponent {
     this.form = new FormGroup({
       addOns: new FormControl<string[]>([])
     });
+
   }
 
   toggleAddOn(value: string, event: Event) {
+
     const checked = (event.target as HTMLInputElement).checked;
     const selected = this.form.value.addOns || [];
 
@@ -52,7 +55,7 @@ export class StepAddOnsComponent {
     console.log('Vai indietro');
   }
 
-  nextStep() {
+  submit() {
     const selectedTitles = this.form.value.addOns || [];
 
     // Recupera gli oggetti completi (con titolo e prezzo)
@@ -75,11 +78,11 @@ export class StepAddOnsComponent {
         step: 'AddOns', // nome dello step (puoi cambiarlo se preferisci)
         values: selectedAddOns
       }
+
     ];
 
     // Salva il nuovo riepilogo
     this.stepSummaryService.setSummary(newSummary);
-    console.log('tutti i campi:',this.stepSummaryService.getSummary())
 
     this.router.navigate(['/summary']);
   }

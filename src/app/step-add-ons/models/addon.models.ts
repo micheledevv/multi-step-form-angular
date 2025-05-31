@@ -1,4 +1,4 @@
-export interface AddOn {
+export interface ListAddons {
   title: string;
   desc: string;
   price: string;

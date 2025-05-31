@@ -1,14 +1,19 @@
-<form action="" [formGroup]="form">
+<form action="" [formGroup]="form" (ngSubmit)="submit()">
     <section>
         <h1>Info Personali</h1>
-        <div *ngFor="let input of inputField">
+        @for (input of inputField; track $index) {
+        <div>
             <div id="boxHeaderInputs">
 
 
                 <label for="">{{input.label}}</label>
-                <p id="errorInputs" *ngIf= "form.get(input.controlName).errors">
+                @if (form.get(input.controlName).errors) {
+
+
+                <p id="errorInputs">
                     Il campo {{ input.label.toLowerCase() }} non è valido.
                 </p>
+                }
 
 
             </div>
@@ -20,10 +25,11 @@
             </div>
 
         </div>
+        }
 
         <div id="btnSubmitStepInfo">
 
-            <button class="next-step-btn" (click)="submit()" type="button" [class.btn-disabled]="form.invalid"
+            <button class="next-step-btn" type="button" [class.btn-disabled]="form.invalid"
                 [disabled]="form.invalid">Prossimo Step</button>
 
         </div>

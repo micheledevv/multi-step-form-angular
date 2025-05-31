@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StepSummaryService } from '../step-summary/services/step-summary.service';
 import { StepFormService } from '../step-form-nav.service';
 import { Router } from '@angular/router';
-import { Plan } from './models/plan.model';
+import { ListPlan, Plan } from './models/plan.model';
 
 @Component({
   selector: 'app-step-plan',
@@ -16,7 +16,7 @@ import { Plan } from './models/plan.model';
 export class StepPlanComponent {
   constructor(private router:Router, private stepPlanService:StepPlanService, private stepSummaryService: StepSummaryService, private stepNavService:StepFormService){}
 
-  listPlans:any[] = []
+  listPlans:ListPlan[] = []
   planChoose:string;
   form:FormGroup;
 
@@ -24,19 +24,22 @@ export class StepPlanComponent {
     this.form = new FormGroup({
       plan: new FormControl(false) // false = mensile (switch disattivato)
 
-    })
+    });
+
    this.listPlans = this.stepPlanService.getPlan()
   }
 
   selectYourPlan(planTitle: string) {
+
   this.planChoose = planTitle;
-  const isAnnual = this.form.get('plan')?.value;
+  const isAnnual = this.form.get('plan').value;
 
   const paymentType = isAnnual ? 'Annuale' : 'Mensile';
 
   const selectedPlan:Plan = {
     piano: this.planChoose,
     tipoPagamento: paymentType
+
   };
 
   let summaryValues = this.stepSummaryService.getSummary();
@@ -47,7 +50,6 @@ export class StepPlanComponent {
   summaryValues.push(selectedPlan);
 
   this.stepSummaryService.setSummary(summaryValues); 
-  console.log(summaryValues)// Se hai un metodo set, meglio ancora
 }
 
 
@@ -55,7 +57,7 @@ export class StepPlanComponent {
 
   }
 
-  nextStep(){
+  submit(){
     this.stepNavService.goToNextStep()
     this.router.navigate(['/addons']);
 

@@ -43,7 +43,7 @@ export class StepSummaryComponent implements OnInit {
     console.log('Torna indietro');
   }
 
-  nextStep() {
+  submit() {
     console.log('Conferma e invia dati');
   }
 }

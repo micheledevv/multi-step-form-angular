@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="submit()">
   <header>
     <h1>Sommario</h1>
   </header>
@@ -6,7 +6,10 @@
   <main>
     <div id="boxSummary">
       <!-- Piano selezionato -->
-      <div id="boxPlanChoose" *ngIf="plan">
+      @if (plan) {
+
+
+      <div id="boxPlanChoose">
         <div id="planChoose">
           <h2>{{ plan.piano }} ({{ plan.tipoPagamento.toLowerCase() }})</h2>
           <a href="#">Cambia</a>
@@ -15,14 +18,17 @@
           <p>€{{ plan.prezzo }}/mese</p>
         </div>
       </div>
+      }
 
       <hr />
 
       <!-- Add-ons -->
-      <div *ngFor="let add of addOns" id="addonChoose">
+      @for (add of addOns; track $index) {
+      <div id="addonChoose">
         <h4>{{ add.title }}</h4>
         <p>{{ add.price }}</p>
       </div>
+      }
     </div>
 
     <!-- Totale -->
@@ -35,6 +41,6 @@
   <!-- Bottoni -->
   <div id="boxButtons">
     <button class="previus-step-btn" type="button" (click)="previousPage()">Vai indietro</button>
-    <button class="next-step-btn" type="button" (click)="nextStep()">Conferma</button>
+    <button class="next-step-btn" type="button">Conferma</button>
   </div>
 </form>

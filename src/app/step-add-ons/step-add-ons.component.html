@@ -1,10 +1,11 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <header>
     <h1>Scegli add-ons</h1>
   </header>
 
   <main>
-    <div *ngFor="let addOn of listAddOns">
+    @for (addOn of listAddOns; track $index) {
+    <div>
       <label id="boxAddOns">
         <input
           type="checkbox"
@@ -18,6 +19,7 @@
         <p>{{ addOn.price }}</p>
       </label>
     </div>
+  }
   </main>
 
   <div id="btnSubmitStepAddOns">
@@ -29,7 +31,7 @@
       type="button"
       [disabled]="!isAtLeastOneSelected()"
       [ngClass]="{ 'btn-disabled': !isAtLeastOneSelected() }"
-      (click)="nextStep()"
+     
     >
       Prossimo step
     </button>

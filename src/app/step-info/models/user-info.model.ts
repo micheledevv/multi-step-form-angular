@@ -1,5 +1,6 @@
-export interface UserInfo {
-  name: string;
-  emailAddress: string;
-  phoneNumber: string;
+export interface UserInfo{
+  controlName: string;
+  label: string;
+  placeholder: string;
+  type: string;
 }
