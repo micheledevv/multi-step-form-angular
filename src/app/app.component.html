@@ -1,35 +1,39 @@
-<section>
-  <form>
-    <nav>
-      <ul>
-        @for (stepForm of stepForms; track $index) {
+@if (showLayout) {
+  <section>
+    <form>
+      <nav>
+        <ul>
+          @for (stepForm of stepForms; track stepForm.number) {
+            <li>
+              <header>
+                <div [ngStyle]="{
+                  'background-color': stepForm.number === currentStepNumber ? '#86BBD8' : '',
+                  'cursor': stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'
+                }">
+                  {{ stepForm.number }}
+                </div>
 
-        <li>
-          <header>
-            <div [ngStyle]="{
-        'background-color': stepForm.number === currentStepNumber ? '#86BBD8' : '',
-        'cursor': stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'
-      }">
-              {{ stepForm.number }}
-            </div>
+                <aside>
+                  <h5>{{ stepForm.title }}</h5>
+                  <a [routerLink]="stepForm.number === currentStepNumber ? stepForm.route : null"
+                    [style.pointer-events]="stepForm.number === currentStepNumber ? 'auto' : 'none'"
+                    [style.cursor]="stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'">
+                    {{ stepForm.value }}
+                  </a>
+                </aside>
+              </header>
+            </li>
+          }
+        </ul>
+      </nav>
 
-            <aside>
-              <h5>{{ stepForm.title }}</h5>
-              <a [routerLink]="stepForm.number === currentStepNumber ? stepForm.route : null"
-                [style.pointer-events]="stepForm.number === currentStepNumber ? 'auto' : 'none'"
-                [style.cursor]="stepForm.number === currentStepNumber ? 'pointer' : 'not-allowed'">
-                {{ stepForm.value }}
-              </a>
-            </aside>
-          </header>
-        </li>
-        }
-      </ul>
-
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </form>
-</section>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </form>
+  </section>
+} @else {
+  <section style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <router-outlet></router-outlet>
+  </section>
+}

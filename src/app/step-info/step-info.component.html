@@ -1,26 +1,24 @@
 <form action="" [formGroup]="form" (ngSubmit)="submit()">
     <section>
+
         <h1>Info Personali</h1>
+
         @for (input of inputField; track $index) {
         <div>
             <div id="boxHeaderInputs">
 
-
                 <label for="">{{input.label}}</label>
-                @if (form.get(input.controlName).errors) {
-
+                @if (form.get(input.controlName).invalid) {
 
                 <p id="errorInputs">
                     Il campo {{ input.label.toLowerCase() }} non è valido.
                 </p>
                 }
 
-
             </div>
             <div id="boxInput">
                 <input [style.border-color]="form.get(input.controlName).invalid ? 'red' : null" type="{{input.type}}"
                     placeholder="{{input.placeholder}}" formControlName="{{input.controlName}}">
-
 
             </div>
 

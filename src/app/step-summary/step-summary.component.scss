@@ -7,7 +7,8 @@ form {
 
     main {
         #boxSummary {
-            background-color: #CAD2C5;
+            background-color: #edf5ea;
+            padding: 15px;
 
             #boxPlanChoose {
                 display: flex;
@@ -27,6 +28,7 @@ form {
 
                 #priceChoose {
                     font-family: regular;
+                    font-weight: bold;
 
                 }
             }
@@ -53,7 +55,6 @@ form {
 
     #totalPrice {
         margin-top: 10px;
-        background-color: aqua;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -64,6 +65,8 @@ form {
 
         p {
             font-family: regular;
+            color: blue;
+            font-size: 22px;
         }
     }
     #boxButtons{
