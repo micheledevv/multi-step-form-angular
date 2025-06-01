@@ -5,6 +5,7 @@ import { NgClass } from '@angular/common';
 import { StepAddOnsService } from './services/step-add-ons.service';
 import { StepSummaryService } from '../step-summary/services/step-summary.service'; // <-- IMPORTA IL SERVICE
 import { ListAddons } from './models/addon.models';
+import { StepFormService } from '../step-form-nav.service';
 
 @Component({
   selector: 'app-step-add-ons',
@@ -20,7 +21,8 @@ export class StepAddOnsComponent {
   constructor(
     private router: Router,
     private stepAddonsService: StepAddOnsService,
-    private stepSummaryService: StepSummaryService
+    private stepSummaryService: StepSummaryService,
+    private stepFormNavService: StepFormService,
   ) {}
 
   ngOnInit() {
@@ -56,6 +58,7 @@ export class StepAddOnsComponent {
   }
 
   submit() {
+    this.stepFormNavService.goToNextStep()
     const selectedTitles = this.form.value.addOns || [];
 
     // Recupera gli oggetti completi (con titolo e prezzo)

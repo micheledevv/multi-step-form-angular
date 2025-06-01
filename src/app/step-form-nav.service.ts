@@ -1,12 +1,13 @@
 // step-form-nav.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { StepFormNav } from './models/step-form-nav.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StepFormService {
-  private stepForms = [
+  private stepForms:StepFormNav[] = [
     { title: 'STEP 1', value: 'LE TUE INFO', route: 'info', number: 1 },
     { title: 'STEP 2', value: 'SELEZIONA PIANO', route: 'plan', number: 2 },
     { title: 'STEP 3', value: 'ADD-ONS', route: 'addons', number: 3 },
@@ -18,7 +19,7 @@ export class StepFormService {
 
   constructor() {}
 
-  getStepForm(): Observable<any[]> {
+  getStepForm(): Observable<StepFormNav[]> {
     return of(this.stepForms);
   }
 
@@ -33,7 +34,4 @@ export class StepFormService {
     }
   }
 
-  goToStep(step: number): void {
-    this.currentStepSubject.next(step);
-  }
 }

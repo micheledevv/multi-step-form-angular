@@ -9,9 +9,9 @@ export class StepPlanService {
   constructor() { }
 
   listPlan:ListPlan[] = [
-    {title:'Arcade', price:'€9/mo', img:'assets/images/icon-arcade.svg'},
-    {title:'Avanzato', price:'€12/mo', img:'assets/images/icon-advanced.svg'},
-    {title:'Pro', price:'€15/mo', img:'assets/images/icon-pro.svg'}
+    {title:'Arcade', price:'€9/mese', img:'assets/images/icon-arcade.svg'},
+    {title:'Avanzato', price:'€12/mese', img:'assets/images/icon-advanced.svg'},
+    {title:'Pro', price:'€15/mese', img:'assets/images/icon-pro.svg'}
 
 
   ]
