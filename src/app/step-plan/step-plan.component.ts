@@ -5,6 +5,7 @@ import { StepSummaryService } from '../step-summary/services/step-summary.servic
 import { StepFormService } from '../step-form-nav.service';
 import { Router } from '@angular/router';
 import { ListPlan, Plan } from './models/plan.model';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-step-plan',
@@ -26,7 +27,12 @@ export class StepPlanComponent {
 
     });
 
-   this.listPlans = this.stepPlanService.getPlan()
+   this.stepPlanService.getAllPlans().pipe(
+    tap((res) => {
+      this.listPlans = res;
+    })
+
+   ).subscribe()
   }
 
   selectYourPlan(planTitle: string) {

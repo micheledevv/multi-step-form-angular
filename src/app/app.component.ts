@@ -3,8 +3,8 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterModule, Router
 import { StepFormService } from './step-form-nav.service';
 import { filter, tap } from 'rxjs';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { StepFormNav } from './models/step-form-nav.model';
 
-// app.component.ts
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,7 +14,7 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 })
 
 export class AppComponent {
-  stepForms: any[] = [];
+  stepForms: StepFormNav[] = [];
   currentStepNumber: number = 1;
   showLayout: boolean = true;
 

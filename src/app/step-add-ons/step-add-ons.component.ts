@@ -6,6 +6,7 @@ import { StepAddOnsService } from './services/step-add-ons.service';
 import { StepSummaryService } from '../step-summary/services/step-summary.service'; // <-- IMPORTA IL SERVICE
 import { ListAddons } from './models/addon.models';
 import { StepFormService } from '../step-form-nav.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-step-add-ons',
@@ -26,7 +27,12 @@ export class StepAddOnsComponent {
   ) {}
 
   ngOnInit() {
-    this.listAddOns = this.stepAddonsService.getListAddOns();
+    this.stepAddonsService.getAllAddOns().pipe(
+      tap((res) => {
+        this.listAddOns = res;
+      })
+
+    ).subscribe()
 
     this.form = new FormGroup({
       addOns: new FormControl<string[]>([])
